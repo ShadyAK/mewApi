@@ -7,6 +7,9 @@ app = Flask(__name__)
 app.secret_key = "asdkjfbaskdljfouaksdhfklsadhlfhsdlifhsk"
 app.permanent_session_lifetime = timedelta(days=5)
 
+@app.route("/",methods = ["GET"])
+def home():
+    return "HOME"
 @app.route("/translate",methods = ["GET"])
 def translate():
     json_data  = request.json 
