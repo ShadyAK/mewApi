@@ -1,6 +1,5 @@
 from flask import Flask,render_template,request,redirect,url_for,session,flash,Response
 from datetime import datetime,timedelta
-import json
 from translate import Translate
 
 
@@ -16,10 +15,7 @@ def translate():
     print(text,target_lan)
     
     translate_object = Translate()
-   
-    res = translate_object.translate(text,target_lan)
-    #print(json.dumps(res))
-    return res
+    return translate_object.translate(text,target_lan)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
