@@ -10,7 +10,7 @@ app.permanent_session_lifetime = timedelta(days=5)
 @app.route("/",methods = ["GET"])
 def home():
     return "HOME"
-@app.route("/translate",methods = ["GET"])
+@app.route("/translate",methods = ["GET","POST"])
 def translate():
     json_data  = request.json 
     text       = json_data["text"]
