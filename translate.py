@@ -1,3 +1,4 @@
+from gettext import translation
 from typing import Text
 from urllib import response
 from langdetect import detect
@@ -37,6 +38,12 @@ class Translate:
                 }]
 
         request = requests.post(constructed_url, params=params, headers=headers, json=body)
-        response = request.json()
+        response = request.json()[0]["translations"][0]
 
-        return json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separators=(',', ': '))       
+        result = json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separators=(',', ': '))       
+    
+        conversion = response["text"]
+        conversion_langage = response["to"]
+        result = {"text" : conversion,
+                  "to":conversion_langage}
+        return json.dumps(result,ensure_ascii=False)

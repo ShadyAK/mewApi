@@ -18,4 +18,4 @@ def translate():
     return translate_object.translate(text,target_lan)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug = True)
