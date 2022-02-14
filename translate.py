@@ -38,10 +38,11 @@ class Translate:
                 }]
 
         request = requests.post(constructed_url, params=params, headers=headers, json=body)
+        #response = request.json()       
+        #return json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separators=(',', ': '))
         response = request.json()[0]["translations"][0]
-
         conversion = response["text"]
         conversion_langage = response["to"]
         result = {"text" : conversion,
                   "to":conversion_langage}
-        return json.dumps(result,ensure_ascii=False)
+        return json.dumps(result,ensure_ascii=False, separators=(',', ': '))

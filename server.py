@@ -18,7 +18,7 @@ def translate():
     print(text,target_lan)
     
     translate_object = Translate()
-    return translate_object.translate(text,target_lan)
+    return Response(translate_object.translate(text,target_lan), mimetype="application/json")
 
 if __name__ == "__main__":
     app.run()
