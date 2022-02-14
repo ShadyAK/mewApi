@@ -7,7 +7,10 @@ app = Flask(__name__)
 app.secret_key = "asdkjfbaskdljfouaksdhfklsadhlfhsdlifhsk"
 app.permanent_session_lifetime = timedelta(days=5)
 
-@app.route("/translate",methods = ["GET"])
+@app.route("/",methods = ["GET"])
+def home():
+    return "HOME"
+@app.route("/translate",methods = ["GET","POST"])
 def translate():
     json_data  = request.json 
     text       = json_data["text"]
@@ -18,4 +21,4 @@ def translate():
     return translate_object.translate(text,target_lan)
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run()
